@@ -1,6 +1,6 @@
 # Loom
 
-A zero-dependency template engine, built for **Grand Hack IPEC 2026 — Zero
+A zero-dependency template engine, built for **Zero
 Dependency 2026, Track B (Parsers & Data Formats)**.
 
 Loom takes a template string with `{{ variable }}` placeholders and
