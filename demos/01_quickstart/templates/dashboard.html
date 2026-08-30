@@ -1,0 +1,38 @@
+{% extends "base" %}
+
+{% block title %}Team Dashboard{% endblock %}
+
+{% block content %}
+  <h2>Welcome back, {{ user.name | title }}!</h2>
+
+  {% if user.is_admin %}
+    <p class="badge">You have admin access.</p>
+  {% else %}
+    <p class="badge">Standard member access.</p>
+  {% endif %}
+
+  <h3>Team ({{ team | length }} members)</h3>
+  <ul>
+  {% for member in team %}
+    <li>
+      {{ loop.index }}. {{ member.name | title }} — {{ member.role | upper }}
+      {% if member.active %}
+        (active)
+      {% else %}
+        (offline)
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+
+  <h3>Recent Tasks</h3>
+  {% if tasks %}
+    <ol>
+    {% for task in tasks %}
+      <li>{{ task.title }} — assigned to {{ task.owner | default('unassigned') }}</li>
+    {% endfor %}
+    </ol>
+  {% else %}
+    <p>No tasks right now. Nice work clearing the board.</p>
+  {% endif %}
+{% endblock %}

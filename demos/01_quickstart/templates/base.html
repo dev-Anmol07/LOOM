@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>{% block title %}My Site{% endblock %}</title></head>
+<body>
+  <header>
+    <h1>{{ site_name }}</h1>
+  </header>
+
+  <main>
+    {% block content %}
+    <p>Default content — pages override this block.</p>
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; {{ year }} {{ site_name }}</p>
+  </footer>
+</body>
+</html>

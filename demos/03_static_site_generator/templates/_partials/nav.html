@@ -1,0 +1,5 @@
+<nav class="nav">
+  {% for link in nav_links %}
+    <a href="{{ link.url }}" class="{% if link.active %}active{% endif %}">{{ link.label }}</a>
+  {% endfor %}
+</nav>

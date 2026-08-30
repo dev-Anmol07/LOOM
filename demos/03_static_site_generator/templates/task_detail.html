@@ -1,0 +1,17 @@
+{% extends "base" %}
+
+{% block title %}{{ site_name }} — {{ task.title }}{% endblock %}
+
+{% block content %}
+  <a href="index.html" class="back">&larr; back to tasks</a>
+  <h1>{{ task.title }}</h1>
+  <p class="owner-line">Owner: {{ task.owner | default('unassigned') }}</p>
+
+  {% if task.done %}
+    <p class="badge">Completed</p>
+  {% else %}
+    <p class="badge admin">In progress</p>
+  {% endif %}
+
+  <p class="task-id">Task ID: {{ task.id }}</p>
+{% endblock %}

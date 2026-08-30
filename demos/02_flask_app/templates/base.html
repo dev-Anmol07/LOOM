@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{{ site_name }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ static_css }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">{{ site_name }}</div>
+    {% include "_partials/nav" %}
+  </header>
+
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <p>&copy; {{ year }} {{ site_name }} &middot; rendered entirely by <strong>Loom</strong> (zero dependencies)</p>
+  </footer>
+</body>
+</html>

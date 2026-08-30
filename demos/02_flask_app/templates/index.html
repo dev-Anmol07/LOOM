@@ -1,0 +1,27 @@
+{% extends "base" %}
+
+{% block title %}{{ site_name }} — Tasks{% endblock %}
+
+{% block content %}
+  <h1>Open Tasks</h1>
+  <p class="lede">{{ tasks | length }} task{% if tasks | length != 1 %}s{% endif %} tracked. Try adding one with a name like <code>&lt;b&gt;test&lt;/b&gt;</code> below — Loom autoescapes it.</p>
+
+  {% if tasks %}
+    <ul class="task-list">
+    {% for task in tasks %}
+      <li class="{% if task.done %}done{% endif %}">
+        <a href="/tasks/{{ task.id }}">{{ task.title }}</a>
+        <span class="owner">{{ task.owner | default('unassigned') }}</span>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty">No tasks yet — add the first one below.</p>
+  {% endif %}
+
+  <form action="/tasks/new" method="post" class="new-task-form">
+    <input type="text" name="title" placeholder="Task title" required>
+    <input type="text" name="owner" placeholder="Owner (optional)">
+    <button type="submit">Add task</button>
+  </form>
+{% endblock %}

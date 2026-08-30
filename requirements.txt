@@ -1,0 +1,15 @@
+# Intentionally empty.
+#
+# Loom (loom.py) has zero third-party runtime dependencies — only Python's
+# standard library (re, html, dataclasses, typing, __future__). Nothing
+# belongs in this file for the core project to run.
+#
+# Verify programmatically with: python check_dependencies.py
+#
+# The only exception anywhere in this repo is demos/02_flask_app/, which uses
+# Flask to host Loom inside a real web server for demonstration purposes.
+# That is a disclosed, demo-only dependency (see STDLIB.md) — it is not
+# listed here because it is not a dependency of Loom itself. If you want to
+# run that one demo, install it manually:
+#
+#     pip install flask --break-system-packages

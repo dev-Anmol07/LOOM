@@ -1,0 +1,36 @@
+{% extends "base" %}
+
+{% block title %}{{ site_name }} — Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Welcome back, {{ user.name | title }}!</h1>
+
+  {% if user.is_admin %}
+    <p class="badge admin">Admin access</p>
+  {% else %}
+    <p class="badge">Member access</p>
+  {% endif %}
+
+  <h2>Team ({{ team | length }} members)</h2>
+  <ul class="team-list">
+  {% for member in team %}
+    <li>
+      <span class="idx">{{ loop.index }}.</span>
+      {{ member.name | title }}
+      <span class="role">{{ member.role | upper }}</span>
+      {% if member.active %}
+        <span class="status active">active</span>
+      {% else %}
+        <span class="status offline">offline</span>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+
+  <h2>Task load</h2>
+  <ul class="task-list">
+  {% for task in tasks %}
+    <li>{{ task.title }} — {{ task.owner | default('unassigned') }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
